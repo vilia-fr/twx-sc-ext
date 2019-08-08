@@ -65,6 +65,16 @@ catch it in the calling code.
 
 There are no external Java dependencies.
 
+## Security considerations
+
+This extension executes a command-line utility on the Windows `PATH`. An evildoer with write access to any of the directories on the PATH can compromise its 
+results or execute malicious code under Tomcat user. This simplistic design has major implications on your server security, so please make sure you understand
+it before using this extension. 
+
+Most importantly, do not install untrusted software on the server host, and make sure your Tomcat user has as few access rights as possible. But even then
+there is a risk that this extension may compromise the system, so **DON'T USE IT IN PRODUCTION**, or better modify it to make it safer (e.g. use absolute
+path to `sc`, or use another mechanism altogether).
+
 ## Building
 
 1. Copy JAR files from ThingWorx Extension SDK into /twx-lib directory;
