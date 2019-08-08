@@ -1,0 +1,31 @@
+<Entities>
+	<ExtensionPackages>
+		<ExtensionPackage name="WindowsServicesExtension" description="Windows Services Extension" vendor="Vilia" packageVersion="1.0.0" minimumThingWorxVersion="6.6.0" />
+	</ExtensionPackages>
+	<DataShapes>
+		<DataShape name="WindowsService">
+			<FieldDefinitions>
+				<FieldDefinition baseType="STRING" name="name" ordinal="1" />
+				<FieldDefinition baseType="STRING" name="description" ordinal="2" />
+				<FieldDefinition baseType="STRING" name="type" ordinal="3" />
+				<FieldDefinition baseType="STRING" name="state" ordinal="4" />
+			</FieldDefinitions>
+		</DataShape>
+	</DataShapes>
+	<Resources>
+		<Resource name="WindowsServicesFunctions" description="Windows Services function library" className="fr.vilia.twx.WindowsServices" aspect.isCreatable="false">
+			<RunTimePermissions>
+				<Permissions resourceName="*">
+					<ServiceInvoke>
+						<Principal isPermitted="true" principalName="Administrators" type="Group" />
+						<Principal isPermitted="true" principalName="Developers" type="Group" />
+						<Principal isPermitted="true" principalName="Users" type="Group" />
+					</ServiceInvoke>
+				</Permissions>
+			</RunTimePermissions>
+			<JarResources>
+				<FileResource type="JAR" file="thingworx-sc-extension.jar" description="Windows Services resource JAR" />
+			</JarResources>
+		</Resource>
+	</Resources>
+</Entities>
